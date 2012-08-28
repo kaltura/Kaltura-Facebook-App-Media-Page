@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+.project
+.settings/
+.buildpath
+#These are ignored to protect login information
+config.php
+pages.txt
