@@ -1,10 +1,3 @@
-<?php 
-print_r($_REQUEST);
-$signed_request = $_REQUEST["signed_request"];
-list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
-$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
-print_r($data);
-?>
 <!DOCTYPE HTML>
 <html>
 <head>
