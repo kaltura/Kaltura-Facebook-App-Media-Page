@@ -1,4 +1,5 @@
 <?php 
+$signed_request = $_REQUEST['signed_request'];
 list($encoded_sig, $payload) = explode('.', $signed_request, 2);
 $sig = base64_url_decode($encoded_sig);
 $data = json_decode(base64_url_decode($payload), true);
