@@ -1,5 +1,9 @@
 <?php
-$page = $_REQUEST['fb_page_id'];
+$page = @$_REQUEST['fb_page_id'];
+if($page == '') { 
+	echo 'You may only visit this admin console from Facebook'.'</br>';
+	die();
+}
 ?>
 <!DOCTYPE HTML>
 <html>
