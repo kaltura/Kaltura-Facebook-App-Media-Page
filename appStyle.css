@@ -161,7 +161,9 @@
 
 #featuredVideos {
 	width: 378px;
+	height: 75px;
 	margin: 0 auto;
+	margin-top: 6px;
 }
 
 #play {
@@ -193,4 +195,8 @@ body, html {
 #gallery {
 	width: 378px;
 	margin: 0 auto;
+}
+
+#player {
+	height: 300px;
 }
