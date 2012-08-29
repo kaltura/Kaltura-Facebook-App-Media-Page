@@ -43,11 +43,31 @@ $search = preg_replace_callback('|"|','escapeChar',$search);
 $search = preg_replace_callback('|-|','escapeChar',$search);
 $search = preg_replace_callback('|\\/|','escapeChar',$search);
 $filter->freeText = $search;
+$pager->pageSize = $pageSize;
+$pager->pageIndex = $page;
 if($facePage['type'] == 'cat') {
 	$filter->categoriesIdsMatchAnd = $facePage['id'];
 }
-$pager->pageSize = $pageSize;
-$pager->pageIndex = $page;
+else {
+	$playlist = $client->playlist->get($facePage['id']);
+	$playlistContent = $playlist->playlistContent;
+	@$xml = simplexml_load_string($playlistContent);
+	if($xml === FALSE) {
+		$filter->idIn = $playlistContent;
+	}
+	else {
+		echo 'test';
+		$xml->total_results = $pageSize;
+		$playlistType = KalturaPlaylistType::DYNAMIC;
+		$playlistContent = $xml->asXML();
+		$playlist = $client->playlist->executefromcontent($playlistType, $playlistContent);
+		$idIn = "";
+		foreach($playlist as $playlistEntry) {
+			$idIn .= $playlistEntry->id.',';
+		}
+		$filter->idIn = $idIn;
+	}
+}
 $results = $client->media->listAction($filter, $pager);
 $count = $results->totalCount;
 	

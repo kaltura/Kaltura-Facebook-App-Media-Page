@@ -58,14 +58,15 @@ else {
 				var response = jQuery.parseJSON(msg);
 				loadVideo(response[1]);
 				$('#featuredVideos').html(response[0]);
-				entryId = $('#featuredVideos').children('#' + response[1]);
+				entryId = response[1];
+				$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
 				$(".thumblink").click(function () {
 					loadVideo($(this).attr('id'));
 					if(entryId != 0)
-						entryId.children('#play').hide();
-					entryId = $(this);
-					entryId.children('#play').css('display', 'block');
-					window.scrollTo(0,0);
+						$('a[id="' + entryId + '"]').children('#play').hide();
+					entryId = $(this).attr('id');
+					$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
+					$("html, body").animate({ scrollTop: 0 }, 600);
 			    });
 			});
 		}
@@ -82,14 +83,17 @@ else {
 			}).done(function(msg) {
 				$('body').unmask();
 				$('#entries').html(msg);
+				$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
 				//This is called whenever a video's thumbnail is clicked
 				$(".thumblink").click(function () {
 					loadVideo($(this).attr('id'));
 					if(entryId != 0)
-						entryId.children('#play').hide();
-					entryId = $(this);
-					entryId.children('#play').css('display', 'block');
-					window.scrollTo(0,0);
+						$('a[id="' + entryId + '"]').children('#play').hide();
+					entryId = $(this).attr('id');
+					console.log(entryId);
+					console.log('a[id="' + entryId + '"]');
+					$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
+					$("html, body").animate({ scrollTop: 0 }, 600);
 			    });
 			});
 		}
