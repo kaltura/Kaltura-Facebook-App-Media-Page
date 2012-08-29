@@ -108,6 +108,7 @@ if($page == '') {
 				url: "getSession.php",
 				data: {email: $('#email').val(), password: $('#password').val(), partnerId: $('#partnerChoice').val()}
 			}).done(function(msg) {
+				$('#loginLoader').show();
 				if(msg == "loginfail") {
 					alert("Invalid username/password");
 					$('#submitPartner').show();
