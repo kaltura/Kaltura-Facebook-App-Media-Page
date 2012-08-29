@@ -1,8 +1,8 @@
 <?php
 require_once('config.php');
 $admin = @$data['page']['admin'];
-$page = @$data['page']['id'];
-//$pageId = '261435287306812';
+$pageId = @$data['page']['id'];
+$pageId = '261435287306812';
 $pages = @file_get_contents(PAGES);
 if($pages != '') {
 	$pages = unserialize($pages);
