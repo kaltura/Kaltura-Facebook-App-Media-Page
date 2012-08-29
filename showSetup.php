@@ -161,7 +161,7 @@ $multiRequest = $client->doMultiRequest();
 		});
 	});
 </script>
-<div id='player' class='section'>
+<div id='playerTitle' class='section'>
 	Player
 </div>
 <div id='playerDiv'>
