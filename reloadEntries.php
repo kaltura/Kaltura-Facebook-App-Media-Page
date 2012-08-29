@@ -56,7 +56,6 @@ else {
 		$filter->idIn = $playlistContent;
 	}
 	else {
-		echo 'test';
 		$xml->total_results = $pageSize;
 		$playlistType = KalturaPlaylistType::DYNAMIC;
 		$playlistContent = $xml->asXML();
