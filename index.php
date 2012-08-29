@@ -2,7 +2,7 @@
 require_once('config.php');
 $admin = @$data['page']['admin'];
 $pageId = @$data['page']['id'];
-$pageId = '261435287306812';
+//$pageId = '261435287306812';
 $pages = @file_get_contents(PAGES);
 if($pages != '') {
 	$pages = unserialize($pages);
