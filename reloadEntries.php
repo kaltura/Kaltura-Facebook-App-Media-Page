@@ -95,8 +95,8 @@ $nextPage = $page + 1;
 if ($page < $veryLastPage) $afterPageString .= "<a title='{$nextPage}' href='javascript:pagerClicked ($nextPage, \"$search\")'>Next</a> ";
 $pagerString = "<span style=\"color:#ccc;\">Total (" . $count . ") </span>" . $beforePageString . $pagerString . $afterPageString;
 
-echo '<div class="pagerDiv">'.$pagerString.'</div>';
-echo '<div class="entriesDiv">';
+echo '<div id="pagerDiv">'.$pagerString.'</div>';
+echo '<div id="gallery">';
 //Uses a counter to keep track of each entry on the page
 //Many elements such as id's and name's rely on this counter
 $count = 0;

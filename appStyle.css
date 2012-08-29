@@ -151,7 +151,7 @@
 }
 
 #page {
-	width: 810px;
+	width: 785px;
 }
 
 #player {
@@ -160,18 +160,37 @@
 }
 
 #featuredVideos {
-	width: 360px;
+	width: 378px;
 	margin: 0 auto;
 }
 
 #play {
 	position: relative;
 	display: none;
-	margin-top: -59px;
+	margin-top: -64px;
 	margin-left: 33px;
 }
 
 .thumblink {
 	cursor: pointer;
 	float: left;
+	margin-right: 6px;
+}
+
+body, html {
+	height: 790px;
+}
+
+#searchDiv {
+	width: 596px;
+	margin: 0 auto;
+}
+
+#pagerDiv {
+	text-align: center;
+}
+
+#gallery {
+	width: 378px;
+	margin: 0 auto;
 }

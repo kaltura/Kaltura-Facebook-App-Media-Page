@@ -133,7 +133,7 @@ else {
 	<div id="page">
 		<div id="player"></div>
 		<div id="featuredVideos"></div>
-		<div class="searchDiv">
+		<div id="searchDiv">
 			<span id="searchText">Search all channels by name, description, or tags: </span><input type="text" id="searchBar" autofocus="autofocus">
 			<button id="searchButton" class="searchButtonClass" type="button" onclick="showEntries()">Search</button>
 			<button id="showButton" type="button" onclick="showEntries(1, '')">Show All</button>
