@@ -56,6 +56,7 @@ if($page == '') {
 				url: "getSession.php",
 				data: {email: $('#email').val(), partnerId: 0, password: $('#password').val()}
 			}).done(function(msg) {
+				$('#loginLoader').hide();
 				if(msg == "loginfail") {
 					$('#loginButton').show();
 					alert("Invalid username/password");
@@ -69,7 +70,6 @@ if($page == '') {
 						showSetup();
 					}
 					else {
-						$('#loginLoader').hide();
 						partnerLogin(response);
 					}
 				}
