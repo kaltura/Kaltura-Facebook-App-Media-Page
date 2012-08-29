@@ -149,3 +149,29 @@
 .btnLogin:active {
     text-shadow:rgba(0,0,0,0.3) 0 -1px 0px; 
 }
+
+#page {
+	width: 810px;
+}
+
+#player {
+	width: 400px;
+	margin: 0 auto;
+}
+
+#featuredVideos {
+	width: 360px;
+	margin: 0 auto;
+}
+
+#play {
+	position: relative;
+	display: none;
+	margin-top: -59px;
+	margin-left: 33px;
+}
+
+.thumblink {
+	cursor: pointer;
+	float: left;
+}

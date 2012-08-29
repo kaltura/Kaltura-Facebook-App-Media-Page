@@ -15,7 +15,7 @@ if($page == '') {
 	<link href="lib/chosen/chosen.css" rel="stylesheet"/>
 	<link href="lib/select2/select2.css" rel="stylesheet"/>
 	<!-- Script Includes -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<script src="lib/chosen/chosen.jquery.js"></script>
 	<script src="lib/select2/select2.js"></script>
 	<!-- Page Scripts -->

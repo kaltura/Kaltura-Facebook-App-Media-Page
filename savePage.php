@@ -33,7 +33,7 @@ if(array_key_exists($_REQUEST['page'], $pages)) {
 $page['player'] = $_REQUEST['options'][0];
 $page['type'] = $_REQUEST['options'][1];
 $page['id'] = $_REQUEST['options'][2];
-$page['videos'] = $_REQUEST['options'][3];
+$page['videos'] = substr($_REQUEST['options'][3], 0, -1);
 $page['admin'] = $client->partner->get($_REQUEST['partnerId'])->adminSecret;
 $page['partner'] = $_REQUEST['partnerId'];
 $pages[$_REQUEST['page']] = $page;
