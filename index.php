@@ -90,8 +90,6 @@ else {
 					if(entryId != 0)
 						$('a[id="' + entryId + '"]').children('#play').hide();
 					entryId = $(this).attr('id');
-					console.log(entryId);
-					console.log('a[id="' + entryId + '"]');
 					$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
 					FB.Canvas.scrollTo(0,0);
 			    });
@@ -162,7 +160,7 @@ else {
 		<div id="player"></div>
 		<div id="featuredVideos"></div>
 		<div id="searchDiv">
-			<span id="searchText">Search all channels by name, description, or tags: </span><input type="text" id="searchBar" autofocus="autofocus">
+			<span id="searchText">Search videos by name, description, or tags: </span><input type="text" id="searchBar" autofocus="autofocus">
 			<button id="searchButton" class="searchButtonClass" type="button" onclick="showEntries()">Search</button>
 			<button id="showButton" type="button" onclick="showEntries(1, '')">Show All</button>
 		</div>
