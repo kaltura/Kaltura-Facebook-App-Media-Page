@@ -66,7 +66,7 @@ else {
 						$('a[id="' + entryId + '"]').children('#play').hide();
 					entryId = $(this).attr('id');
 					$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
-					$("html, body").animate({ scrollTop: 0 }, 600);
+					FB.Canvas.scrollTo(0,0);
 			    });
 			});
 		}
@@ -93,7 +93,7 @@ else {
 					console.log(entryId);
 					console.log('a[id="' + entryId + '"]');
 					$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
-					$("html, body").animate({ scrollTop: 0 }, 600);
+					FB.Canvas.scrollTo(0,0);
 			    });
 			});
 		}
@@ -118,6 +118,7 @@ else {
 	        flashvars.autoplay = true;
 	        flashvars.disableAlerts = true;
 	        flashvars.entryId = entryId;
+	        flashvars.autoPlay = true;
 	        kWidget.embed({
                 'targetId': kdpId,
                 'wid': '_<?php echo $partnerId; ?>',
@@ -134,6 +135,29 @@ else {
 	</script>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 'YOUR_APP_ID', // App ID
+      channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
 	<div id="page">
 		<div id="player"></div>
 		<div id="featuredVideos"></div>
