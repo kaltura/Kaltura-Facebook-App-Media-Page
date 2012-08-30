@@ -1,5 +1,8 @@
 <?php
 require_once('config.php');
+$signed_request = $_REQUEST["signed_request"];
+list($encoded_sig, $payload) = explode('.', $signed_request, 2);
+$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
 $admin = @$data['page']['admin'];
 $pageId = @$data['page']['id'];
 //$pageId = '261435287306812';
