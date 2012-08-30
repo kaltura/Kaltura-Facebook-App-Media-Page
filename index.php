@@ -172,7 +172,7 @@ else {
 		<div id="player"></div>
 		<div id="featuredVideos"></div>
 		<div id="searchDiv">
-			<span id="searchText">Search videos by name, description, or tags: </span><input type="text" id="searchBar" autofocus="autofocus">
+			<span id="searchText">Search videos by name or description, or tags: </span><input type="text" id="searchBar" autofocus="autofocus">
 			<button id="searchButton" class="searchButtonClass" type="button" onclick="showEntries()">Search</button>
 			<button id="showButton" type="button" onclick="showEntries(1, '')">Show All</button>
 		</div>
