@@ -1,7 +1,6 @@
 <?php
 require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
-print_r($_REQUEST);
 if($page == '') {
 	echo 'You may only visit this admin console from your Facebook Page'.'</br>';
 	die();
