@@ -5,7 +5,7 @@ if($page == '') {
 	echo 'You may only visit this admin console from Facebook'.'</br>';
 	die();
 }
-else if($_SERVER['HTTP_REFERER'] != 'https://www.facebook.com/' && $_SERVER['HTTP_REFERER'] != 'http://www.facebook.com/')
+else if($_SERVER['HTTP_REFERER'] != 'https://www.facebook.com/' && $_SERVER['HTTP_REFERER'] != 'http://www.facebook.com/') {
 	echo 'You may only visit this admin console from Facebook'.'</br>';
 	die();
 }
