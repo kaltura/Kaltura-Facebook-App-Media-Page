@@ -3,7 +3,7 @@ if(array_key_exists('tabs_added', $_REQUEST)) {
 	$id = array_keys($_REQUEST['tabs_added']);
 	$id = $id[0];
 	$page = json_decode(file_get_contents('https://graph.facebook.com/'.$id));
-	print_r($page);
+	print_r($page->link);
 	die();
 	echo '<script> window.location="http://facebook.com/'.$id.'"</script>';
 	die();
