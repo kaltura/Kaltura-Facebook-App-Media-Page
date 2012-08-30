@@ -129,8 +129,8 @@ foreach ($results->objects as $result) {
 	$display .= '<img src="lib/play.png" id="play">';
 	$thumbnail = '<a class="thumblink" id="'.$result->id.'" title="'.$name.'" >'.$display.'</a>';
 	echo $thumbnail;
-	//Only show 3 entry thumbnails per row
-    if($count > 0 && ($count + 1) % 3 == 0)
+	//Only show 4 entry thumbnails per row
+    if($count > 0 && ($count + 1) % 4 == 0)
     	echo '<div style="clear: both;"></div>';
 	++$count;
 }
