@@ -1,4 +1,10 @@
 <?php
+if(array_key_exists('tabs_added', $_REQUEST)) {
+	$id = array_keys($_REQUEST['tabs_added']);
+	$id = $id[0];
+	echo '<script> window.location="facebook.com/'.$id.'"</script>';
+}
+
 require_once('config.php');
 $signed_request = $_REQUEST["signed_request"];
 list($encoded_sig, $payload) = explode('.', $signed_request, 2);
