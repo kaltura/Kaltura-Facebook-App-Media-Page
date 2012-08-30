@@ -15,6 +15,10 @@ Facebook has made accessing the admin screen (Page Tab Edit URL) for Page Tabs p
 * Click __Apps__ in the sidebar that appears
 * Find the MediaPage application and click __Go to App__
 
+Creating your own application
+-----------------------------
+If you want to create your own version of this application you can start <a href="https://developers.facebook.com/apps" target="_blank">here</a>. Create a new app and in your Basic Settings select __Page Tab__ when asked how your app integrates with Facebook. Once you have hosted the Kaltura Media Page application files on your server you can point the __Page Tab URL__ to _index.php_ and the __Page Tab Edit URL__ to _admin.php_. As you can see there is also a __Secure Page Tab URL__ required which must point to the __https__ version of _index.php_. With the current CSS settings the Page Tab will look best if you set __Page Tab Width__ to _Wide (810px)_. Save your changes and copy the application's App ID/API Key into _config.php_. You should now have a fully functional Facebook Page Tab application of your own!
+
 Files
 -----
 

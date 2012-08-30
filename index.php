@@ -19,7 +19,6 @@ list($encoded_sig, $payload) = explode('.', $signed_request, 2);
 $data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
 $admin = @$data['page']['admin'];
 $pageId = @$data['page']['id'];
-$pageId = '274651322646196'; //Temporary value for the demo app, remove this line to use your own app!
 //Grabs the database of Facebook pages that have been configured to use the Page Tab
 $pages = @file_get_contents(PAGES);
 //Checks to see if the database exists
