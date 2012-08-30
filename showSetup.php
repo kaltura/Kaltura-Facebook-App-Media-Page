@@ -152,7 +152,8 @@ $multiRequest = $client->doMultiRequest();
 					alert("You must select 3 videos!");
 				}
 				else if(msg == 'success') {
-					alert('Your changes have been submitted successfully!');
+					alert('Your changes have been submitted successfully! You will now be taken to your gallery.');
+					location.href="index.php";
 				}
 				else {
 					alert('Error: ' + msg);
