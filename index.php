@@ -16,11 +16,11 @@ if($pages != '') {
 		$partnerId = $page['partner'];
 	}
 	else {
-		die();
+		echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
 	}
 }
 else {
-	die();
+	echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
 }
 ?>
 <!DOCTYPE HTML>

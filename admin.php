@@ -139,8 +139,8 @@ if($page == '') {
 		}
 	</script>
 </head>
-<body>
-	<div id="parent" style="height: 100%;">
+<body style="height: 500px;">
+	<div id="parent">
 		<div id='setup'>
 			<div id='title'><h1>Kaltura Media Page for Pages</h1></div>
 			<div id='loginDiv'>
