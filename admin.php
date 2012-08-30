@@ -2,11 +2,15 @@
 print($_SERVER['HTTP_REFERER']);
 require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
-$pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->link.'?v=app_'.APP_ID;
 if($page == '') { 
 	echo 'You may only visit this admin console from Facebook'.'</br>';
 	die();
 }
+else if($_SERVER['HTTP_REFERER'] != 'https://www.facebook.com/' && $_SERVER['HTTP_REFERER'] != 'http://www.facebook.com/')
+	echo 'You may only visit this admin console from Facebook'.'</br>';
+	die();
+}
+$pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->link.'?v=app_'.APP_ID;
 ?>
 <!DOCTYPE HTML>
 <html>
