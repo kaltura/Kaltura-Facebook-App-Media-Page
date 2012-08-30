@@ -153,7 +153,7 @@ $multiRequest = $client->doMultiRequest();
 				}
 				else if(msg == 'success') {
 					alert('Your changes have been submitted successfully! You will now be taken to your gallery.');
-					window.top.location.reload(true);
+					location.href="index.php";
 				}
 				else {
 					alert('Error: ' + msg);
