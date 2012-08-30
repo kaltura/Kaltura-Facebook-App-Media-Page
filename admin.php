@@ -1,4 +1,7 @@
 <?php
+print_r($_REQUEST);
+die();
+
 $page = @$_REQUEST['fb_page_id'];
 if($page == '') { 
 	echo 'You may only visit this admin console from Facebook'.'</br>';
