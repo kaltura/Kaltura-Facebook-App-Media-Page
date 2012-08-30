@@ -1,5 +1,4 @@
 <?php
-print($_SERVER['HTTP_REFERER']);
 require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
 if($page == '') { 
