@@ -38,5 +38,5 @@ $page['admin'] = $client->partner->get($_REQUEST['partnerId'])->adminSecret;
 $page['partner'] = $_REQUEST['partnerId'];
 $pages[$_REQUEST['page']] = $page;
 $pages = serialize($pages);
-file_put_contents(PAGES, '<?php'."\n".$pages);
+file_put_contents(PAGES, '<?php echo "'.$pages.'"');
 echo 'success';
