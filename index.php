@@ -25,11 +25,21 @@ if($pages != '') {
 		$partnerId = $page['partner'];
 	}
 	else {
+		if($admin == 1) {
+			$page = 'https://www.facebook.com/pages/edit/?id='.$pageId.'&sk=apps';
+			header('Location: '.$page);
+			die();
+		}
 		echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
 		die();
 	}
 }
 else {
+	if($admin == 1) {
+		$page = 'https://www.facebook.com/pages/edit/?id='.$pageId.'&sk=apps';
+		header('Location: '.$page);
+		die();
+	}
 	echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
 	die();
 }

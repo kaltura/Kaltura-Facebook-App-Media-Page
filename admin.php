@@ -3,16 +3,6 @@ require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
 print_r($_REQUEST);
 if($page == '') {
-	if(array_key_exists('signed_request', $_REQUEST)) {
-		$signed_request = $_REQUEST["signed_request"];
-		list($encoded_sig, $payload) = explode('.', $signed_request, 2);
-		$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
-		if($data['page']['admin'] == 1) {
-			$page = 'https://www.facebook.com/pages/edit/?id='.$data['page']['id'].'&sk=apps';
-			header('Location: '.$page);
-			die();
-		}
-	}
 	echo 'You may only visit this admin console from Facebook'.'</br>';
 	die();
 }
