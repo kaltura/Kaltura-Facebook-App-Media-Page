@@ -3,5 +3,4 @@ node_modules
 .project
 .settings/
 .buildpath
-#These are ignored to protect login information
 pages.txt
