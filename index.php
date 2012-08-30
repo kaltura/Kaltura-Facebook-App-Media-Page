@@ -24,10 +24,12 @@ if($pages != '') {
 	}
 	else {
 		echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
+		die();
 	}
 }
 else {
 	echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
+	die();
 }
 ?>
 <!DOCTYPE HTML>

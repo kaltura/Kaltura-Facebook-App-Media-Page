@@ -1,5 +1,7 @@
 <?php
+require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
+$pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->link.'?v=app_'.APP_ID;
 if($page == '') { 
 	echo 'You may only visit this admin console from Facebook'.'</br>';
 	die();
@@ -23,6 +25,7 @@ if($page == '') {
 		var kalturaSession = "";
 		var partnerId = 0;
 		var page = <?php echo $page; ?>;
+		var pageURL = '<?php echo $pageURL; ?>';
 
 		function validEmail(input) {
 			var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
