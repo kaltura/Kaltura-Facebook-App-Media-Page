@@ -1,4 +1,4 @@
-Kaltura Media Page for Facebook Pages
+Kaltura Media Page Tab for Facebook Pages
 =====================================
 Kaltura Media Page allows you to create a gallery of videos for your Facebook Page. When users visit your Facebook page they can click on the MediaPage tab and view a category or playlist of videos that you preselect using the administrator console.
 
