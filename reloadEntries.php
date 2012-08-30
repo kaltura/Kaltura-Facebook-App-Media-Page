@@ -1,4 +1,6 @@
 <?php
+//Loads the thumbnail gallery for the category or playlist chosen in the admin console
+
 set_time_limit(0);
 require_once("config.php");
 $pages = @unserialize(file_get_contents(PAGES));
@@ -116,22 +118,18 @@ $pagerString = "<span style=\"color:#ccc;\">Total (" . $count . ") </span>" . $b
 
 echo '<div id="pagerDiv">'.$pagerString.'</div>';
 echo '<div id="gallery">';
-//Uses a counter to keep track of each entry on the page
-//Many elements such as id's and name's rely on this counter
-$count = 0;
 //Loops through every entry on your current page
 foreach ($results->objects as $result) {
 	//Creates a thumbnail that can be clicked to view the content
 	$name = $result->name;
 	$type = $result->mediaType;
 	$id = $result->id;
-	$display =  $result->thumbnailUrl ? '<img width="120" height="68" id="thumb'.$count.'" src="'.$result->thumbnailUrl.'" title="'.$name.'" >' : '<div>'.$id.' '.$name.'</div>';
+	$display =  $result->thumbnailUrl ? '<img width="120" height="68" src="'.$result->thumbnailUrl.'" title="'.$name.'" >' : '<div>'.$id.' '.$name.'</div>';
 	$display .= '<img src="lib/play.png" id="play">';
 	$thumbnail = '<a class="thumblink" id="'.$result->id.'" title="'.$name.'" >'.$display.'</a>';
 	echo $thumbnail;
 	//Only show 4 entry thumbnails per row
     if($count > 0 && ($count + 1) % 4 == 0)
     	echo '<div style="clear: both;"></div>';
-	++$count;
 }
 echo '</div>';

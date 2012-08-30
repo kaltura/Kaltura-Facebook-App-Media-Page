@@ -42,7 +42,7 @@ else {
 	}	
 }
 
-//Once a partner is selected, generate a Kaltura session
+//Once a partner is selected, generate a Kaltura Session
 function properKS($partnerId) {
 	$config = new KalturaConfiguration($partnerId);
 	$config->serviceUrl = 'http://www.kaltura.com/';

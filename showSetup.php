@@ -1,4 +1,6 @@
 <?php
+//Loads the page that allows the Page Tab to be configured
+
 //Includes the client library and starts a Kaltura session to access the API
 //More informatation about this process can be found at
 //http://knowledge.kaltura.com/introduction-kaltura-client-libraries
@@ -8,8 +10,10 @@ $config->serviceUrl = 'http://www.kaltura.com/';
 $client = new KalturaClient($config);
 $client->setKs($_REQUEST['session']);
 
+//Start a Multi-Request to grab all the required information
 $client->startMultiRequest();
 
+//Grabs all the players on the Kaltura account
 $filter = new KalturaUiConfFilter();
 $filter->orderBy = '-createdAt';
 $filter->objTypeEqual = KalturaUiConfObjType::PLAYER;
@@ -19,6 +23,7 @@ $pager->pageSize = 500;
 $pager->pageIndex = 1;
 $client->uiConf->listAction($filter, $pager);
 
+//Grabs all the categories on the Kaltura account
 $filter = new KalturaCategoryFilter();
 $filter->orderBy = '-createdAt';
 $pager = new KalturaFilterPager();
@@ -26,6 +31,7 @@ $pager->pageSize = 500;
 $pager->pageIndex = 1;
 $client->category->listAction($filter, $pager);
 
+//Grabs all the playlists on the Kaltura account
 $filter = new KalturaPlaylistFilter();
 $filter->orderBy = '-createdAt';
 $pager = new KalturaFilterPager();
@@ -33,6 +39,7 @@ $pager->pageSize = 500;
 $pager->pageIndex = 1;
 $client->playlist->listAction($filter, $pager);
 
+//Perform the Multi-Request
 $multiRequest = $client->doMultiRequest();
 
 ?>
@@ -45,6 +52,7 @@ $multiRequest = $client->doMultiRequest();
 	var videos = "";
 	
 	$(document).ready(function() {
+		//When an action is performed with the radio button, show the appropriate options
 		$(':radio').click(function() {
 			$('.videoSelect').select2('val', '');
 			$('.thumbs').html('');
@@ -61,6 +69,7 @@ $multiRequest = $client->doMultiRequest();
 			}
 		});
 		
+		//Uses the select2 library to make a fancy searchable selector that dynamically updates using AJAX
 		$('.videoSelect').select2({
 		    placeholder: "Video name/id",
 		    minimumInputLength: 2,
@@ -104,11 +113,13 @@ $multiRequest = $client->doMultiRequest();
 		    }
 		});
 		
+		//If a new category or playlist is selected, clear all the selected videos
 		$('.contentChoice').change(function() {
 			$('.videoSelect').select2('val', '');
 			$('.thumbs').html('');
 		});
 		
+		//When a video is selected, load its thumbnail
 		$('.videoSelect').on("change", function(e) {
 			videos = "";
 			var div = '#' + $(this)[0].id + 'Thumb';
@@ -119,6 +130,7 @@ $multiRequest = $client->doMultiRequest();
 			}).done(function(msg) {
 				$(div).html(msg);
 			});
+			//Every time a video is selected, update the string that tracks the selected videos
 			for(var i = 0; i < $('.featured').children(':input').length; ++i) {
 				var video = $('.featured').children(':input')[i].value;
 				if(video !== "") {
@@ -127,11 +139,14 @@ $multiRequest = $client->doMultiRequest();
 			}
 		});
 
+		//Saves the selected options for the user's Facebook Page
 		$('#submitButton').click(function() {
 			$('#submitButton').hide();
 			$('#submitLoader').show();
 			var choices = new Array();
+			//Store the chosen player
 			choices.push($('#playerChoice').val());
+			//Store the id of the selected category or playlist
 			switch (choice.val()) {
 				case 'cat':
 					choices.push('cat',$('#categoryChoice').val());
@@ -140,6 +155,7 @@ $multiRequest = $client->doMultiRequest();
 					choices.push('list',$('#playlistChoice').val());
 					break;
 			}
+			//Store the selected featured videos
 			choices.push(videos);
 			$.ajax({
 				type: "POST",
@@ -148,9 +164,11 @@ $multiRequest = $client->doMultiRequest();
 			}).done(function(msg) {
 				$('#submitLoader').hide();
 				$('#submitButton').show();
+				//Makes sure that 3 featured videos are selected
 				if(msg == 'low') {
 					alert("You must select 3 videos!");
 				}
+				//If the options are correctly stored, alert the user and take them to their Page Tab
 				else if(msg == 'success') {
 					alert('Your changes have been submitted successfully! You will now be taken to your gallery.');
 					window.top.location.href = pageURL;

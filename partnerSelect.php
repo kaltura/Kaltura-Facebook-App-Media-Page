@@ -1,5 +1,6 @@
 <?php
-//This script displays the selector for choosing a partner on the account
+//Displays the selector for choosing a partner on the account
+
 	$response = $_REQUEST['response'];
 ?>
 <span style='display: block; margin-bottom: 5px;'>Select a Partner ID</span>

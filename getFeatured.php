@@ -1,9 +1,13 @@
 <?php
+//Grabs the featured videos that were selected in the admin console
+
 set_time_limit(0);
+//Includes the config file that contains all the Facebook App info
 require_once('config.php');
 $pages = @unserialize(file_get_contents(PAGES));
 $page = $pages[$_REQUEST['page']];
 $videos = explode(',', $page['videos']);
+//Randomly selects one of the featured videos to play it when the page loads
 $entryId = $videos[mt_rand(0, 2)];
 $id = $page['id'];
 $partnerId = $page['partner'];
@@ -21,8 +25,10 @@ $ks = $client->session->start($admin, 'MediaPage', KalturaSessionType::ADMIN, $p
 $client->setKs($ks);
 
 $response = array();
+//$response[0] will hold the HTML to display in the gallery
 $response[0] = '';
 $filter = new KalturaMediaEntryFilter();
+//Only grabs the 3 featured videos
 $filter->idIn = $page['videos'];
 $pager = new KalturaFilterPager();
 $pager->pageSize = 3;
@@ -40,5 +46,6 @@ foreach($entries as $entry) {
 	//$response[0] .= '<div class="featuredThumbs" id="'.$entry->id.'"><img src="'.$entry->thumbnailUrl.'"></div>';
 }
 $response[0] .= '<div style="clear: both;"></div>';
+//$response[1] holds the ID of the featured video that plays on page load
 $response[1] = $entryId;
 echo json_encode($response);

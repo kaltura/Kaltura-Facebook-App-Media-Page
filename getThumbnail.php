@@ -1,4 +1,6 @@
 <?php
+//Loads the thumbnail for a video chosen in the admin console
+
 //Includes the client library and starts a Kaltura session to access the API
 //More informatation about this process can be found at
 //http://knowledge.kaltura.com/introduction-kaltura-client-libraries
