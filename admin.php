@@ -1,4 +1,5 @@
 <?php
+print($_SERVER['HTTP_REFERER']);
 require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
 $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->link.'?v=app_'.APP_ID;
