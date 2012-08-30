@@ -1,12 +1,22 @@
 <?php
 require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
-if($page == '') { 
+if($page == '') {
+	if(array_key_exists('signed_request', $_REQUEST)) {
+		$signed_request = $_REQUEST["signed_request"];
+		list($encoded_sig, $payload) = explode('.', $signed_request, 2);
+		$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
+		if($data['page']['admin'] == 1) {
+			$page = 'https://www.facebook.com/pages/edit/?id='.$data['page']['id'].'&sk=apps';
+			header('Location: '.$page);
+			die();
+		}
+	}
 	echo 'You may only visit this admin console from Facebook'.'</br>';
 	die();
 }
 else if($_SERVER['HTTP_REFERER'] != 'https://www.facebook.com/' && $_SERVER['HTTP_REFERER'] != 'http://www.facebook.com/') {
-	echo 'You may only visit this admin console from Facebook'.'</br>';
+	echo 'You may only visit this admin console from your Facebook Page'.'</br>';
 	die();
 }
 $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->link.'?v=app_'.APP_ID;
