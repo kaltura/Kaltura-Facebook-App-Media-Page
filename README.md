@@ -34,9 +34,7 @@ Files
 Folders
 -------
 
-* AccountWizard - Contains a setup wizard that allows the admin to completely set up an account to use the paid content gallery
-* server - Contains the html5-dg library with other files listed above
-	(https://github.com/paypalx/html5-dg)
-* server/client - Contains the Kaltura PHP5 client library
-	(http://www.kaltura.com/api_v3/testme/client-libs.php)
-* server/cert - Contains the certification information to securely connect to PayPal
+* lib/chosen - Contains the Chosen javascript plugin (http://harvesthq.github.com/chosen/)
+* lib/loadmask - Contains the loadmask jQuery plugin (http://code.google.com/p/jquery-loadmask/)
+* lib/php5 - Contains the Kaltura PHP5 client library (http://www.kaltura.com/api_v3/testme/client-libs.php)
+* lib/select2 - Contains the Select2 library (http://ivaynberg.github.com/select2/)
