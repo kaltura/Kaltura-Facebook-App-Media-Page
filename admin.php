@@ -1,6 +1,7 @@
 <?php
 require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
+print_r($_REQUEST);
 if($page == '') {
 	if(array_key_exists('signed_request', $_REQUEST)) {
 		$signed_request = $_REQUEST["signed_request"];
