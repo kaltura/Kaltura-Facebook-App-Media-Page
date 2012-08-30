@@ -1,4 +1,6 @@
 <?php
+//Stores the selected options for the user's Facebook Page
+
 require_once('config.php');
 //Includes the client library and starts a Kaltura session to access the API
 //More informatation about this process can be found at
@@ -27,6 +29,7 @@ else {
 	$pages = array();
 }
 $page = array();
+//Update and store the options for the Facebook Page
 if(array_key_exists($_REQUEST['page'], $pages)) {
 	$page = $pages[$_REQUEST['page']];
 }
