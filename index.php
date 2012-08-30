@@ -2,7 +2,7 @@
 if(array_key_exists('tabs_added', $_REQUEST)) {
 	$id = array_keys($_REQUEST['tabs_added']);
 	$id = $id[0];
-	echo '<script> window.location="facebook.com/'.$id.'"</script>';
+	echo '<script> window.location="http://facebook.com/'.$id.'"</script>';
 }
 
 require_once('config.php');
