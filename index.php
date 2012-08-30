@@ -4,6 +4,7 @@ if(array_key_exists('tabs_added', $_REQUEST)) {
 	$id = array_keys($_REQUEST['tabs_added']);
 	$id = $id[0];
 	$page = json_decode(file_get_contents('https://graph.facebook.com/'.$id))->link;
+	echo 'Redirecting you to your app...';
 	echo '<script> window.location="'.$page.'?v=app_'.APP_ID.'"</script>';
 	die();
 }
