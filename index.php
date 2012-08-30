@@ -3,8 +3,10 @@ require_once('config.php');
 if(array_key_exists('tabs_added', $_REQUEST)) {
 	$id = array_keys($_REQUEST['tabs_added']);
 	$id = $id[0];
-	$page = json_decode(file_get_contents('https://graph.facebook.com/'.$id))->link;
+	//$page = json_decode(file_get_contents('https://graph.facebook.com/'.$id))->link;
 	header('Location: '.$page.'?v=app_'.APP_ID);
+	$page = 'https://www.facebook.com/pages/edit/?id='.$id.'&sk=apps';
+	header('Location: '.$page);
 	die();
 }
 $signed_request = $_REQUEST["signed_request"];
