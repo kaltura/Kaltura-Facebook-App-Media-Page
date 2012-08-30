@@ -28,20 +28,20 @@ if($pages != '') {
 	else {
 		if($admin == 1) {
 			$page = 'https://www.facebook.com/pages/edit/?id='.$pageId.'&sk=apps';
-			header('Location: '.$page);
+			echo '<script> window.top.location.href = "'.$page.'" </script>';
 			die();
 		}
-		echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
+		echo '<script> window.top.location.href="http://facebook.com/'.$pageId.'"</script>';
 		die();
 	}
 }
 else {
 	if($admin == 1) {
 		$page = 'https://www.facebook.com/pages/edit/?id='.$pageId.'&sk=apps';
-		header('Location: '.$page);
+		echo '<script> window.top.location.href = "'.$page.'" </script>';
 		die();
 	}
-	echo '<script> location.href="admin.php?fb_page_id='.$pageId.'"</script>';
+	echo '<script> window.top.location.href="http://facebook.com/'.$pageId.'"</script>';
 	die();
 }
 ?>
