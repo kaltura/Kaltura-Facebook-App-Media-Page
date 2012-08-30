@@ -34,7 +34,7 @@ Files
 Folders
 -------
 
-* lib/chosen - Contains the Chosen javascript plugin (http://harvesthq.github.com/chosen/)
-* lib/loadmask - Contains the loadmask jQuery plugin (http://code.google.com/p/jquery-loadmask/)
-* lib/php5 - Contains the Kaltura PHP5 client library (http://www.kaltura.com/api_v3/testme/client-libs.php)
-* lib/select2 - Contains the Select2 library (http://ivaynberg.github.com/select2/)
+* lib/chosen - Contains the <a href="http://harvesthq.github.com/chosen/" target="_blank">Chosen</a> javascript plugin
+* lib/loadmask - Contains the <a href="http://code.google.com/p/jquery-loadmask/" target="_blank">loadmask</a> jQuery plugin
+* lib/php5 - Contains the <a href="http://www.kaltura.com/api_v3/testme/client-libs.php" target="_blank">Kaltura PHP5 Client Library</a>
+* lib/select2 - Contains the <a href="http://ivaynberg.github.com/select2/" target="_blank">Select2</a> library
