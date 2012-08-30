@@ -1,5 +1,9 @@
 <?php
+//This is the front page for the Page Tab that displays the Kaltura gallery
+
+//Includes the config file that contains all the Facebook App info
 require_once('config.php');
+//If the user just added the Page Tab to their Facebook Page, take them to the 'Added Apps' screen for their Facebook Page
 if(array_key_exists('tabs_added', $_REQUEST)) {
 	$id = array_keys($_REQUEST['tabs_added']);
 	$id = $id[0];
@@ -9,15 +13,19 @@ if(array_key_exists('tabs_added', $_REQUEST)) {
 	header('Location: '.$page);
 	die();
 }
+//Grab the signed_request from Facebook and store the Facebook Page id and the admin status of the user
 $signed_request = $_REQUEST["signed_request"];
 list($encoded_sig, $payload) = explode('.', $signed_request, 2);
 $data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
 $admin = @$data['page']['admin'];
 $pageId = @$data['page']['id'];
 $pageId = '274651322646196'; //Temporary value for the demo app, remove this line to use your own app!
+//Grabs the database of Facebook pages that have been configured to use the Page Tab
 $pages = @file_get_contents(PAGES);
+//Checks to see if the database exists
 if($pages != '') {
 	$pages = unserialize($pages);
+	//If the Page Tab has been configured for this Facebook Page, grab the stored information
 	if(array_key_exists($pageId, $pages)) {
 		$page = $pages[$pageId];
 		$id = $page['id'];
@@ -25,21 +33,25 @@ if($pages != '') {
 		$partnerId = $page['partner'];
 	}
 	else {
+		//If the user has admin capabilities for the Facebook Page, take them to the 'Added Apps' screen
 		if($admin == 1) {
 			$page = 'https://www.facebook.com/pages/edit/?id='.$pageId.'&sk=apps';
 			echo '<script> window.top.location.href = "'.$page.'" </script>';
 			die();
 		}
+		//Otherwise, take them back to the Facebook Page because the Page Tab is not ready for viewing
 		echo '<script> window.top.location.href="http://facebook.com/'.$pageId.'"</script>';
 		die();
 	}
 }
 else {
+	//If the user has admin capabilities for the Facebook Page, take them to the 'Added Apps' screen
 	if($admin == 1) {
 		$page = 'https://www.facebook.com/pages/edit/?id='.$pageId.'&sk=apps';
 		echo '<script> window.top.location.href = "'.$page.'" </script>';
 		die();
 	}
+	//Otherwise, take them back to the Facebook Page because the Page Tab is not ready for viewing
 	echo '<script> window.top.location.href="http://facebook.com/'.$pageId.'"</script>';
 	die();
 }
@@ -65,6 +77,7 @@ else {
 		//Keeps track of the page being viewed
 		var currentPage = 1;
 
+		//When the document is ready, load the featured videos and the gallery of videos
 		$(document).ready(function() {
 			loadFeatured();
 			showEntries(1, '');
@@ -74,6 +87,7 @@ else {
 			});
 		});
 
+		//Gets the featured videos and displays them on the page
 		function loadFeatured() {
 			$.ajax({
 				type: "POST",
@@ -85,6 +99,8 @@ else {
 				$('#featuredVideos').html(response[0]);
 				entryId = response[1];
 				$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
+				//Whenever a thumbnail is clicked, load the video and display the play image
+				//over the thumbnail to indicate which video is playing
 				$(".thumblink").click(function () {
 					loadVideo($(this).attr('id'));
 					if(entryId != 0)
@@ -96,6 +112,7 @@ else {
 			});
 		}
 
+		//Loads the video gallery and displays it
 		function showEntries(pageNumber, terms) {
 			if(terms == "")
 				$('#searchBar').val('');
@@ -109,7 +126,8 @@ else {
 				$('body').unmask();
 				$('#entries').html(msg);
 				$('a[id="' + entryId + '"]').children('#play').css('display', 'block');
-				//This is called whenever a video's thumbnail is clicked
+				//Whenever a thumbnail is clicked, load the video and display the play image
+				//over the thumbnail to indicate which video is playing
 				$(".thumblink").click(function () {
 					loadVideo($(this).attr('id'));
 					if(entryId != 0)
@@ -160,26 +178,29 @@ else {
 <body>
 <div id="fb-root"></div>
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : 'YOUR_APP_ID', // App ID
-      channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      xfbml      : true  // parse XFBML
-    });
+	//Initiates the Facebook SDK
+	//This particular application only needs it to perform FB.Canvas.scrollTo(0,0)
+	//in case the video player is out of frame
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : 'YOUR_APP_ID', // App ID
+			channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+			status     : true, // check login status
+			cookie     : true, // enable cookies to allow the server to access the session
+			xfbml      : true  // parse XFBML
+		});
 
     // Additional initialization code here
-  };
+	};
 
-  // Load the SDK Asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
-   }(document));
+	// Load the SDK Asynchronously
+	(function(d){
+		var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement('script'); js.id = id; js.async = true;
+		js.src = "//connect.facebook.net/en_US/all.js";
+		ref.parentNode.insertBefore(js, ref);
+	}(document));
 </script>
 	<div id="page">
 		<div id="player"></div>

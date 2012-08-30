@@ -1,6 +1,11 @@
 <?php
+//This is the front page for the admin console which is used to set up the Page Tab's gallery
+
+//Includes the config file that contains all the Facebook App info
 require_once('config.php');
 $page = @$_REQUEST['fb_page_id'];
+//Prevents unauthorized users from accessing the admin console for the Page Tab
+//Details on appropriately accessing the admin console for the Page Tab can be found in the README
 if($page == '') {
 	echo 'You may only visit this admin console from your Facebook Page'.'</br>';
 	die();
@@ -26,11 +31,16 @@ $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->
 	<script src="lib/select2/select2.js"></script>
 	<!-- Page Scripts -->
 	<script>
+		//Keeps track of your Kaltura session when you log in
 		var kalturaSession = "";
+		//Keeps track of the Partner ID for your session
 		var partnerId = 0;
+		//The id of your Facebook Page
 		var page = <?php echo $page; ?>;
+		//The URL for the Page Tab on your Facebook Page
 		var pageURL = '<?php echo $pageURL; ?>';
 
+		//Validates your email when logging in
 		function validEmail(input) {
 			var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
 			if(!filter.test(input.value)) {
@@ -43,6 +53,7 @@ $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->
 			}
 		}
 
+		//Validates your password when logging in
 		function validPassword(input) {
 			if(input.value == '') {
 				input.setCustomValidity("Please enter a password");
@@ -54,7 +65,7 @@ $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->
 			}
 		}
 
-		//Calls getSession.php to actually sign into the Kaltura API and generate a session key
+		//Generates a Kaltura Session for logging into the admin console
 		function loginSubmit() {
 			$('#loginButton').hide();
 			$('#loginLoader').show();
@@ -83,7 +94,7 @@ $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->
 			});
 		}
 
-		//This lets the user select a partner to log into
+		//This lets the user select a Partner ID to log into
 		//This is only displayed if there is more than one partner on an account
 		function partnerLogin(response) {
 			$('#email').attr("readonly", "readonly");
@@ -106,7 +117,7 @@ $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->
 			});
 		}
 
-		//Submits the partner for login
+		//Generates a Kaltura session for the specific Partner ID
 		function partnerSubmit() {
 			$('#sumbitPartner').hide();
 			$('#loginLoader').show();
@@ -133,6 +144,7 @@ $pageURL = json_decode(file_get_contents('https://graph.facebook.com/'.$page))->
 			});
 		}
 
+		//Once the user is logged in, let them set their gallery up
 		function showSetup() {
 			$.ajax({
 				type: 'POST',
