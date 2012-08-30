@@ -1,7 +1,4 @@
 <?php
-print_r($_REQUEST);
-die();
-
 //Includes the client library and starts a Kaltura session to access the API
 //More informatation about this process can be found at
 //http://knowledge.kaltura.com/introduction-kaltura-client-libraries
@@ -156,7 +153,7 @@ $multiRequest = $client->doMultiRequest();
 				}
 				else if(msg == 'success') {
 					alert('Your changes have been submitted successfully! You will now be taken to your gallery.');
-					location.href="index.php";
+					document.location.reload(true);
 				}
 				else {
 					alert('Error: ' + msg);
