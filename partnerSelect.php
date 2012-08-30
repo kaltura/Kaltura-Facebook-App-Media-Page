@@ -1,5 +1,5 @@
 <?php
-//Displays the selector for choosing a partner on the account
+//Displays the selector for choosing a Partner on the user's Kaltura account
 
 	$response = $_REQUEST['response'];
 ?>
