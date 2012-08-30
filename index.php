@@ -41,6 +41,7 @@ else {
 	<link href="appStyle.css" rel="stylesheet"/>
 	<link href="lib/loadmask/jquery.loadmask.css" rel="stylesheet" type="text/css"/>
 	<!-- Script Includes -->
+	<script src="http://cdnbakmi.kaltura.com/html5/html5lib/v1.6.12.40/mwEmbedLoader.php"></script>
 	<script src="https://cdnbakmi.kaltura.com/html5/html5lib/v1.6.12.40/mwEmbedLoader.php"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 	<script src="lib/loadmask/jquery.loadmask.min.js"></script>
